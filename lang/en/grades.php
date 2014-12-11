@@ -570,6 +570,7 @@ $string['recovergradesdefault_help'] = 'By default recover old grades when re-en
 $string['refreshpreview'] = 'Refresh preview';
 $string['regradeanyway'] = 'Regrade anyway';
 $string['removeallcoursegrades'] = 'Delete all grades';
+$string['removeallcoursegrades_help'] = 'This option delete all course grade items. It does not delete activity grades. Please select each activity individually.';
 $string['removeallcourseitems'] = 'Delete all items and categories';
 $string['report'] = 'Report';
 $string['reportdefault'] = 'Report default ({$a})';
