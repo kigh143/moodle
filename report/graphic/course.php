@@ -15,6 +15,37 @@ $PAGE->set_url('/report/graphic/course.php', array('courseid' =>$courseid));
 $PAGE->set_title('Moodle Graphic Reports');
 $PAGE->set_heading('Moodle Graphic Reports');
 
+
+
+/////////////////////////////////////////////////////////////
+//if ($CFG->version >= 2014051200) { // Moodle 2.7 and higher
+//    $logmanger = get_log_manager();
+//    $readers = $logmanger->get_readers('\core\log\sql_select_reader');
+//    $reader = reset($readers);
+//    $params = array('component' => 'core',
+//        'eventname' => '\core\event\user_loggedin',
+//        'guestid' => $CFG->siteguest,
+//        'timestart' => $now - 30 * DAYSECS);
+//    $select = "component = :component AND eventname = :eventname AND userid <> :guestid AND timecreated >= :timestart";
+//    $rs = $reader->get_events_select($select, $params, 'timecreated DESC', 0, 0);
+//
+//    foreach ($rs as $record) {
+//        foreach (array_reverse($lastmonth, true) as $timestamp => $loggedin) {
+//            $date = usergetdate($timestamp);
+//            if ($record->timecreated >= $timestamp) {
+//                $lastmonth[$timestamp][$record->userid] = true;
+//                break;
+//            }
+//        }
+//    }
+//
+//}
+/////////////////////////////////////////////////////////////////
+
+
+
+
+
 $sql = "SELECT l.eventname, COUNT(*) as quant
         FROM mdl_logstore_standard_log l
         WHERE l.courseid = ".$courseid."
@@ -45,6 +76,7 @@ $datauser = $DB->get_records_sql($sql);
 $activeuserdataset[0] = array('User', 'Percentage');
 
 $i = 1;
+$inactiveusers[0] = array('User', 'Percentage');
 foreach ($datauser as $userdata) {
     if ($i <= 10) {
         $activeuserdataset[$i] = array($userdata->firstname, (int)$userdata->quant);
@@ -82,27 +114,18 @@ foreach ($dataevents as $value) {
 //print_object($usersdataevents);
 echo $OUTPUT->header();
 
-// Most triggered events.
-$gcharts = new Gcharts();
-$gcharts->load(array('graphic_type' => 'ColumnChart', 'yAxis' => array('title' => "Name", 'titleTextStyle' => array('color' => 'red'))));
-$gcharts->set_options(array('title' => 'Most triggered events'));
-echo $gcharts->generate($eventdataset);
-
-echo "<br><br><br>";
-
 // User Activity Pie Chart.
 $gcharts = new Gcharts();
 $gcharts->load(array('graphic_type' => 'PieChart'));
 $gcharts->set_options(array('title' => 'Top 10 most active users'));
 echo $gcharts->generate($activeuserdataset);
 
-echo "<br><br><br>";
+// Most triggered events.
 $gcharts = new Gcharts();
-$gcharts->load(array('graphic_type' => 'PieChart'));
-$gcharts->set_options(array('title' => 'Top 10 less active users'));
-echo $gcharts->generate($inactiveusers);
+$gcharts->load(array('graphic_type' => 'ColumnChart', 'yAxis' => array('title' => "Name", 'titleTextStyle' => array('color' => 'red'))));
+$gcharts->set_options(array('title' => 'Most triggered events'));
+echo $gcharts->generate($eventdataset);
 
-echo "<br><br><br>";
 $gcharts = new Gcharts();
 $gcharts->load(array('graphic_type' => 'linechart'));
 $gcharts->set_options(array('title' => 'Monthly', 'curveType'=> 'function'));
@@ -112,12 +135,12 @@ $array_test = array(array('Mes', 'Eric', 'Kyle', 'Stan', 'Kenny'),
     array('Dec 5',14,34, 27,15),
     array('Dec 15',10, 26, 13, 29),
     array('Dec 20',5, 35, 10, 0),
-    array('Dec 25',10, 15, 20, 25),
+    array('Dec 25',10, 55, 20, 25),
     array('Dec 30',0,10, 10,5),
     array('Jan 5',10,30, 35,30),
     array('Jan 10',5,10, 40,30),
     array('Jan 15',20,15, 15,10));
-//print_object($array_test);
+print_object($array_test);
 echo $gcharts->generate($array_test);
 //echo $gcharts->generate($usersdataevents);
 echo $OUTPUT->footer();

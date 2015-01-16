@@ -23,7 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die;
-use core\log\manager;
+//use core\log\manager;
 
 /**
  * Graphic report renderable class.
