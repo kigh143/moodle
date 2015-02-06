@@ -1,20 +1,21 @@
 <?php
-ini_set('display_errors','1');
+//sini_set('display_errors','1');
 
 require_once('../../config.php');
 require_once($CFG->dirroot . '/report/graphic/lib/gcharts.php');
 require_once($CFG->libdir.'/adminlib.php');
 global $OUTPUT, $PAGE, $DB;
-
+admin_externalpage_setup('report_graphic', '', null, '', array('pagelayout' => 'report'));
 $actionurl = new moodle_url('/report/graphic/index.php');
 $context = context_system::instance();
 $PAGE->set_context($context);
+
 $PAGE->set_url('/report/graphic/index.php');
 $PAGE->set_title('Moodle Graphic Reports');
 $PAGE->set_heading('Moodle Graphic Reports');
 //$test = $PAGE->get_renderable('report_graphic');
 $PAGE->set_pagelayout('report');
-admin_externalpage_setup('report_graphic', '', null, '', array('pagelayout' => 'report'));
+
 // Count events and group by course ID.
 $sql = "SELECT l.courseid, c.shortname, COUNT(*)
         FROM mdl_logstore_standard_log l

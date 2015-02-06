@@ -57,7 +57,7 @@
 	- Table
 
 */
-
+namespace report_graphic;
 class Gcharts 
 {
 	public $library_loaded 		= FALSE;

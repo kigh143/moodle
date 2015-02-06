@@ -457,7 +457,7 @@ class report_log_table_log extends table_sql {
         $selector = implode(' AND ', $joins);
 
         if (!$this->is_downloading()) {
-            $total = $this->filterparams->logreader->get_events_select_count($selector, $params);
+            $total = $this->filterparams->logreader->   get_events_select_count($selector, $params);
             $this->pagesize($pagesize, $total);
         } else {
             $this->pageable(false);

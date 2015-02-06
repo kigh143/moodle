@@ -17,8 +17,8 @@
 /**
  * Log report renderer.
  *
- * @package    report_log
- * @copyright  2014 Rajesh Taneja <rajesh.taneja@gmail.com>
+ * @package    graphic report
+ * @copyright  2015 Simey Lameze <lameze@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,8 +28,8 @@ use core\log\manager;
 /**
  * Report log renderable class.
  *
- * @package    report_log
- * @copyright  2014 Rajesh Taneja <rajesh.taneja@gmail.com>
+ * @package    graphic report
+ * @copyright  2015 Simey Lameze <lameze@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_log_renderable implements renderable {
