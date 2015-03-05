@@ -1129,6 +1129,11 @@
       </PHP_SETTING>
     </PHP_SETTINGS>
     <CUSTOM_CHECKS>
+      <CUSTOM_CHECK file="lib/upgradelib.php" function="check_database_storage_engine" level="optional">
+        <FEEDBACK>
+          <ON_CHECK message="warningunsupporteddbstorageengine" />
+        </FEEDBACK>
+      </CUSTOM_CHECK>
       <CUSTOM_CHECK file="question/engine/upgrade/upgradelib.php" function="quiz_attempts_upgraded" level="required">
         <FEEDBACK>
           <ON_ERROR message="quizattemptsupgradedmessage" />
