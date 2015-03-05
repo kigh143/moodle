@@ -1726,6 +1726,14 @@ $capabilities = array(
         )
     ),
 
+    'moodle/tag:guestaccess' => array(
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes' => array(
+            'guest' => CAP_ALLOW
+        )
+    ),
+
     'moodle/block:view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,

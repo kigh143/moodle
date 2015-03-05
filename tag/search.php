@@ -27,6 +27,9 @@ require_once('lib.php');
 require_once('locallib.php');
 
 require_login();
+if (!has_capability('moodle/tag:guestview', $systemcontext)) {
+    print_error('noguest');
+}
 
 if (empty($CFG->usetags)) {
     print_error('tagsaredisabled', 'tag');

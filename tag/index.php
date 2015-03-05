@@ -29,6 +29,9 @@ require_once($CFG->dirroot.'/lib/weblib.php');
 require_once($CFG->dirroot.'/blog/lib.php');
 
 require_login();
+if (!has_capability('moodle/tag:guestview', $systemcontext)) {
+    print_error('noguest');
+}
 
 if (empty($CFG->usetags)) {
     print_error('tagsaredisabled', 'tag');
