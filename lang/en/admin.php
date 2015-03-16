@@ -970,6 +970,7 @@ $string['sitepolicyguest'] = 'Site policy URL for guests';
 $string['sitepolicyguest_help'] = 'If you have a site policy that all guests must see and agree to before using this site, then specify the URL to it here, otherwise leave this field blank. This setting can contain any public URL. Note: access of not-logged-in users may be prevented with forcelogin setting.';
 $string['sitesectionhelp'] = 'If selected, a topic section will be displayed on the site\'s front page.';
 $string['slasharguments'] = 'Use slash arguments';
+$string['slashargumentswarning'] = 'Disabling slash arguments will not be supported soon, please check your server configuration.';
 $string['smartpix'] = 'Smart pix search';
 $string['soaprecommended'] = 'Installing the optional SOAP extension is useful for web services and some plugins.';
 $string['sort_fullname'] = 'Course full name';
